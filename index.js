@@ -14,6 +14,7 @@ const validTalk = require('./middlewares/validTalk');
 const validToken = require('./middlewares/validToken');
 const editTalker = require('./middlewares/editTalker');
 const deleteTalkerByid = require('./middlewares/deleteTalkerByid');
+const searchTalker = require('./middlewares/searchTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,6 +31,8 @@ app.listen(PORT, () => {
   console.log('Online');
 });
 
+app.get('/talker/search', validToken, searchTalker);
+// app.get('/talker/search', searchTalker);
 app.get('/talker', readTalker);
 app.get('/talker/:id', findTalkerByid);
 app.post('/login', validEmail, validPassword, postLogin);
