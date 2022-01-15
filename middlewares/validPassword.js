@@ -1,7 +1,5 @@
 module.exports = (req, res, next) => {
   const { password } = req.body;
-  console.log('password');
-  console.log(password);
   if (password && password.length >= 6) {
     next();
   } else {
