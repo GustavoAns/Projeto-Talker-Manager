@@ -13,6 +13,7 @@ const validRate = require('./middlewares/validRate');
 const validTalk = require('./middlewares/validTalk');
 const validToken = require('./middlewares/validToken');
 const editTalker = require('./middlewares/editTalker');
+const deleteTalkerByid = require('./middlewares/deleteTalkerByid');
 
 const app = express();
 app.use(bodyParser.json());
@@ -38,3 +39,5 @@ app.put('/talker/:id', validToken, validName, validAge,
   validTalk, validDate, validRate, editTalker);
 // app.put('/talker/:id', validName, validAge,
 //   validTalk, validDate, validRate, editTalker);
+app.delete('/talker/:id', validToken, deleteTalkerByid);
+// app.delete('/talker/:id', deleteTalkerByid);
