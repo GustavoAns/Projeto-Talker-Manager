@@ -12,6 +12,7 @@ const validName = require('./middlewares/validName');
 const validRate = require('./middlewares/validRate');
 const validTalk = require('./middlewares/validTalk');
 const validToken = require('./middlewares/validToken');
+const editTalker = require('./middlewares/editTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -33,3 +34,7 @@ app.get('/talker/:id', findTalkerByid);
 app.post('/login', validEmail, validPassword, postLogin);
 app.post('/talker', validToken, validName, validAge, validTalk, validDate, validRate, addTalker);
 // app.post('/talker', validName, validAge, validTalk, validDate, validRate, addTalker);
+app.put('/talker/:id', validToken, validName, validAge,
+  validTalk, validDate, validRate, editTalker);
+// app.put('/talker/:id', validName, validAge,
+//   validTalk, validDate, validRate, editTalker);
